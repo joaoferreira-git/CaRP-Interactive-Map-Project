@@ -1,8 +1,22 @@
 <html>
-    <body>
-    <script src="https://zoomhub.net/OVGnD.js?width=auto&height=800px">
-    </script>
-    <body>
+    <div id="openseadragon1" style="width: 800px; height: 600px;"></div>
+    <script src="/openseadragon/openseadragon.min.js"></script>
+    <script type="text/javascript">
+    var viewer = OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "/openseadragon/images/",
+        tileSources: [{
+        //required	
+        type:       "zoomifytileservice",
+        width:      8192,
+        height:     8165,
+        tilesUrl:   "/ItalyMapFinal",
+        //optional
+        tileSize: 256,
+        fileFormat: 'jpg'	
+    }]
+    });
+</script>
 </html>
 
 
