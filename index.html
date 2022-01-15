@@ -17,13 +17,16 @@
         }
         </style>
     <div id="openseadragon1" class="fullscreen"></div>
+    <div id="missiongiver" >
+        <img src="MissionGiver.png" class="offsetlarge">
+    </div>
     <script src="openseadragon/openseadragon.min.js"></script>
     <script type="text/javascript">
     var viewer = OpenSeadragon({
         id: "openseadragon1",
         prefixUrl: "openseadragon/images/",
         blendTime: 1,
-        maxZoomLevel: 20,
+        maxZoomLevel: 12,
         tileSources: [{
           //required	
           type:       "zoomifytileservice",
@@ -33,7 +36,14 @@
           //optional
           tileSize: 256,
           fileFormat: 'jpg',
-      }]
+      }],
+      overlays: [{
+        id: 'missiongiver',
+        x: 0.145,
+        y: 0.8085,
+        placement: 'CENTER',
+        checkResize: false
+    }]
     });
     </script>
 </html>
