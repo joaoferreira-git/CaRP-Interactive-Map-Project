@@ -1,22 +1,35 @@
 <html>
-    <div id="openseadragon1" style="width: 800px; height: 600px;"></div>
-    <script src="/openseadragon/openseadragon.min.js"></script>
+    <style type="text/css" media="screen">
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            background: #FFFCFC;
+        }
+        </style>
+    <div id="openseadragon1" class="fullscreen"></div>
+    <script src="openseadragon/openseadragon.min.js"></script>
     <script type="text/javascript">
     var viewer = OpenSeadragon({
         id: "openseadragon1",
-        prefixUrl: "/openseadragon/images/",
+        prefixUrl: "openseadragon/images/",
+        blendTime: 1,
+        maxZoomLevel: 20,
         tileSources: [{
-        //required	
-        type:       "zoomifytileservice",
-        width:      8192,
-        height:     8165,
-        tilesUrl:   "/ItalyMapFinal",
-        //optional
-        tileSize: 256,
-        fileFormat: 'jpg'	
-    }]
+          //required	
+          type:       "zoomifytileservice",
+          width:      8192,
+          height:     8165,
+          tilesUrl:   "ItalyMapFinal/",
+          //optional
+          tileSize: 256,
+          fileFormat: 'jpg'
+      }]
     });
-</script>
+    </script>
 </html>
 
 
