@@ -15,11 +15,58 @@
             overflow: auto;
             background: #FFFCFC;
         }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: -60%;
+            left: 120%;
+
+            opacity: 0;
+            transition: opacity 0.33s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .pointofinterest {
+            position: absolute;
+            display: inline-block;
+        }
+        .pointofinterest .pointofinterestanimation {
+            transform: scale(0.25, 0.25);
+            transition: transform 1s, opacity 0.33s, filter 1s;
+        }
+        .pointofinterest:hover .pointofinterestanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 25px #ffc400);
+        }
         </style>
+
+
     <div id="openseadragon1" class="fullscreen"></div>
-    <div id="missiongiver" >
-        <img src="MissionGiver.png" class="offsetlarge">
+
+    <div id="missiongiver" class="pointofinterest">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.png" class="pointofinterestanimation">
+        <span class="tooltiptext">Mission Giver</span>
     </div>
+    </div>
+    
+    
     <script src="openseadragon/openseadragon.min.js"></script>
     <script type="text/javascript">
     var viewer = OpenSeadragon({
@@ -42,10 +89,11 @@
         x: 0.145,
         y: 0.8085,
         placement: 'CENTER',
-        checkResize: false
+        checkResize: false,
     }]
     });
     </script>
+    
 </html>
 
 
