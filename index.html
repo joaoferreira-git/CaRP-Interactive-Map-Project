@@ -76,11 +76,12 @@
         }
         .poi .missiongiveranimation {
             transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 20px #ffc400);
             transition: transform 1s, filter 1s;
         }
         .poi:hover .missiongiveranimation {
             transform: scale(0.5, 0.5);
-            filter: drop-shadow(0px 0px 25px #ffc400);
+            filter: drop-shadow(0px 0px 40px #ffc400);
         }
         </style>
     </head>
@@ -100,27 +101,27 @@
 
     <div id="openseadragon1" class="fullscreen"></div>
 
-    <div id="missiongiver-antenna" class="poi">
+    <div id="mg-antenna" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
-    <div id="missiongiver-nortedocks" class="poi">
+    <div id="mg-nortedocks" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
-    <div id="missiongiver-norteport" class="poi">
+    <div id="mg-norteport" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
-    <div id="missiongiver-castle" class="poi">
+    <div id="mg-castle" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
-    <div id="missiongiver-airport" class="poi">
+    <div id="mg-airport" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
@@ -146,35 +147,35 @@
           fileFormat: 'jpg',
       }],
       overlays: [{
-        id: 'missiongiver-antenna',
+        id: 'mg-antenna',
         x: 0.145,
         y: 0.8085,
         placement: 'CENTER',
         checkResize: false,
       },
       {
-        id: 'missiongiver-castle',
+        id: 'mg-castle',
         x: 0.224,
         y: 0.234,
         placement: 'CENTER',
         checkResize: false,
     },
     {
-        id: 'missiongiver-airport',
+        id: 'mg-airport',
         x: 0.245,
         y: 0.092,
         placement: 'CENTER',
         checkResize: false,
     },
         {
-        id: 'missiongiver-nortedocks',
+        id: 'mg-nortedocks',
         x: 0.8325,
         y: 0.1485,
         placement: 'CENTER',
         checkResize: false,
     },
         {
-        id: 'missiongiver-norteport',
+        id: 'mg-norteport',
         x: 0.616,
         y: 0.114,
         placement: 'CENTER',
