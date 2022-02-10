@@ -83,6 +83,16 @@
             transform: scale(0.5, 0.5);
             filter: drop-shadow(0px 0px 40px #ffc400);
         }
+
+        .poi .dealershipanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 20px #ff00fb);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .dealershipanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #ff00fb);
+        }
         </style>
     </head>
 
@@ -125,6 +135,11 @@
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="dealership" class="poi">
+        <div id="dealershiptooltip" class="tooltip">
+        <img src="Dealership.webp" class="dealershipanimation" alt="Dealership">
+        <span class="tooltiptext">Dealership</span>
     </div>
     
     
@@ -174,10 +189,17 @@
         placement: 'CENTER',
         checkResize: false,
     },
-        {
+    {
         id: 'mg-norteport',
         x: 0.616,
         y: 0.114,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+        {
+        id: 'dealership',
+        x: 0.202,
+        y: 0.254,
         placement: 'CENTER',
         checkResize: false,
     }]
