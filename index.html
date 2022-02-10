@@ -85,12 +85,12 @@
         }
 
         .poi .dealershipanimation {
-            transform: scale(0.25, 0.25);
+            transform: scale(0.4, 0.4);
             filter: drop-shadow(0px 0px 20px #ff00fb);
             transition: transform 1s, filter 1s;
         }
         .poi:hover .dealershipanimation {
-            transform: scale(0.5, 0.5);
+            transform: scale(0.65, 0.65);
             filter: drop-shadow(0px 0px 40px #ff00fb);
         }
         </style>
@@ -132,6 +132,21 @@
         <span class="tooltiptext">Mission Giver</span>
     </div>
     <div id="mg-airport" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-portino" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-dam" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-fastello" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
@@ -196,10 +211,31 @@
         placement: 'CENTER',
         checkResize: false,
     },
-        {
+    {
+        id: 'mg-portino',
+        x: 0.317,
+        y: 0.84,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-dam',
+        x: 0.226,
+        y: 0.68,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-fastello',
+        x: 0.791,
+        y: 0.697,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
         id: 'dealership',
         x: 0.202,
-        y: 0.254,
+        y: 0.253,
         placement: 'CENTER',
         checkResize: false,
     }]
