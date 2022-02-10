@@ -100,11 +100,15 @@
 
     <div id="openseadragon1" class="fullscreen"></div>
 
-    <div id="missiongiver" class="poi">
+    <div id="missiongiver-antenna" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
+    <div id="missiongiver-nortesmallport" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
     </div>
     
     
@@ -127,9 +131,16 @@
           fileFormat: 'jpg',
       }],
       overlays: [{
-        id: 'missiongiver',
+        id: 'missiongiver-antenna',
         x: 0.145,
         y: 0.8085,
+        placement: 'CENTER',
+        checkResize: false,
+      },
+        {
+        id: 'missiongiver-nortesmallport',
+        x: 0.8325,
+        y: 0.1485,
         placement: 'CENTER',
         checkResize: false,
     }]
