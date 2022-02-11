@@ -24,12 +24,12 @@
             background-color: transparent;
             transition: transform 1s, opacity 1s, filter 1s;
         }
-
         .header:hover {
             transform: scale(0.75, 0.75);
             opacity: 1;
             filter: drop-shadow(0px 0px 25px #100e0e);
         }
+
 
 
         .fullscreen {
@@ -42,10 +42,14 @@
             background: #FFFCFC;
         }
 
+
+
         .tooltip {
             position: relative;
             display: inline-block;
         }
+
+
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 120px;
@@ -70,10 +74,14 @@
             opacity: 1;
         }
 
+
+
         .poi {
             position: absolute;
             display: inline-block;
         }
+
+
         .poi .missiongiveranimation {
             transform: scale(0.25, 0.25);
             filter: drop-shadow(0px 0px 20px #ffc400);
@@ -84,13 +92,47 @@
             filter: drop-shadow(0px 0px 40px #ffc400);
         }
 
+
+        .poi .restaurantanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 20px #1100ff);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .restaurantanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #1100ff);
+        }
+
+
+        .poi .gasstationanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 20px #e092ff);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .gasstationanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #e092ff);
+        }
+
+
+        .poi .garageanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 20px #00ff55);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .garageanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #00ff55);
+        }
+
+
         .poi .dealershipanimation {
-            transform: scale(0.4, 0.4);
+            transform: scale(0.5, 0.5);
             filter: drop-shadow(0px 0px 20px #ff00fb);
             transition: transform 1s, filter 1s;
         }
         .poi:hover .dealershipanimation {
-            transform: scale(0.65, 0.65);
+            transform: scale(0.75, 0.75);
             filter: drop-shadow(0px 0px 40px #ff00fb);
         }
         </style>
@@ -98,6 +140,8 @@
 
     <body>
 
+
+        
     <div class="header">
         <h1>
             <a href="https://discord.gg/AQPyyGddfX">
@@ -109,7 +153,43 @@
         </h1>
     </div>
 
+
+
     <div id="openseadragon1" class="fullscreen"></div>
+
+
+
+    <div id="r-norte" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+    <div id="r-concaazzura" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+    <div id="r-castelleto" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+    <div id="r-fastello" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+    <div id="r-cittavechia" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+    <div id="r-portino" class="poi">
+        <div id="restauranttooltip" class="tooltip">
+        <img src="Restaurant.webp" class="restaurantanimation" alt="Restaurant">
+        <span class="tooltiptext">Restaurant</span>
+    </div>
+
 
     <div id="mg-antenna" class="poi">
         <div id="missiongivertooltip" class="tooltip">
@@ -126,6 +206,21 @@
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
+    <div id="mg-campainghouse" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-campainggasstation" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-fort" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
     <div id="mg-castle" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
@@ -136,7 +231,42 @@
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
+    <div id="mg-concaazzura" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
     <div id="mg-portino" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-portinogasstation" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-randomlight" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-parking" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-police" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-usato" class="poi">
+        <div id="missiongivertooltip" class="tooltip">
+        <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
+        <span class="tooltiptext">Mission Giver</span>
+    </div>
+    <div id="mg-villaplace" class="poi">
         <div id="missiongivertooltip" class="tooltip">
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
@@ -151,13 +281,90 @@
         <img src="MissionGiver.webp" class="missiongiveranimation" alt="Mission Giver">
         <span class="tooltiptext">Mission Giver</span>
     </div>
+
+
+    <div id="gs-nortewest" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-norteeast" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-castelleto" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-airport" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-villaplace" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-usato" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-fastello" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+    <div id="gs-portino" class="poi">
+        <div id="gaststationtooltip" class="tooltip">
+        <img src="GasStation.webp" class="gasstationanimation" alt="Gas Station">
+        <span class="tooltiptext">Gas Station</span>
+    </div>
+
+
+    <div id="g-norte" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+    <div id="g-concaazzura" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+    <div id="g-castelleto" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+    <div id="g-portino" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+    <div id="g-fastello" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+    <div id="g-villaplace" class="poi">
+        <div id="garagetooltip" class="tooltip">
+        <img src="Garage.webp" class="garageanimation" alt="Garage">
+        <span class="tooltiptext">Garage</span>
+    </div>
+
+
     <div id="dealership" class="poi">
         <div id="dealershiptooltip" class="tooltip">
         <img src="Dealership.webp" class="dealershipanimation" alt="Dealership">
         <span class="tooltiptext">Dealership</span>
     </div>
     
-    
+
+
     <script src="openseadragon/openseadragon.min.js"></script>
     <script type="text/javascript">
     var viewer = OpenSeadragon({
@@ -177,13 +384,55 @@
           fileFormat: 'jpg',
       }],
       overlays: [{
+        id: 'r-norte',
+        x: 0.758,
+        y: 0.171,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'r-concaazzura',
+        x: 0.065,
+        y: 0.131,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'r-castelleto',
+        x: 0.235,
+        y: 0.239,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'r-cittavechia',
+        x: 0.594,
+        y: 0.713,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'r-fastello',
+        x: 0.7752,
+        y: 0.668,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'r-portino',
+        x: 0.306,
+        y: 0.836,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
         id: 'mg-antenna',
         x: 0.143,
         y: 0.8085,
         placement: 'CENTER',
         checkResize: false,
-      },
-      {
+    },
+    {
         id: 'mg-castle',
         x: 0.224,
         y: 0.234,
@@ -194,6 +443,13 @@
         id: 'mg-airport',
         x: 0.245,
         y: 0.092,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-concaazzura',
+        x: 0.076,
+        y: 0.149,
         placement: 'CENTER',
         checkResize: false,
     },
@@ -212,9 +468,72 @@
         checkResize: false,
     },
     {
+        id: 'mg-campainghouse',
+        x: 0.473,
+        y: 0.279,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-campainggasstation',
+        x: 0.3594,
+        y: 0.5524,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-fort',
+        x: 0.576,
+        y: 0.031,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
         id: 'mg-portino',
         x: 0.317,
         y: 0.84,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-portinogasstation',
+        x: 0.223,
+        y: 0.851,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-randomlight',
+        x: 0.367,
+        y: 0.815,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-parking',
+        x: 0.4485,
+        y: 0.6705,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-police',
+        x: 0.568,
+        y: 0.7074,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-usato',
+        x: 0.555,
+        y: 0.579,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mg-villaplace',
+        x: 0.733,
+        y: 0.354,
         placement: 'CENTER',
         checkResize: false,
     },
@@ -229,6 +548,104 @@
         id: 'mg-fastello',
         x: 0.791,
         y: 0.697,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-nortewest',
+        x: 0.6138,
+        y: 0.182,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-norteeast',
+        x: 0.8575,
+        y: 0.165,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-castelleto',
+        x: 0.2045,
+        y: 0.297,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-airport',
+        x: 0.0968,
+        y: 0.121,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-villaplace',
+        x: 0.6678,
+        y: 0.352,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-usato',
+        x: 0.5324,
+        y: 0.565,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-fastello',
+        x: 0.799,
+        y: 0.697,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gs-portino',
+        x: 0.222,
+        y: 0.849,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-norte',
+        x: 0.7235,
+        y: 0.1785,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-concaazzura',
+        x: 0.0536,
+        y: 0.126,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-castelleto',
+        x: 0.2,
+        y: 0.258,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-portino',
+        x: 0.328,
+        y: 0.828,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-fastello',
+        x: 0.7955,
+        y: 0.7026,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'g-villaplace',
+        x: 0.686,
+        y: 0.3958,
         placement: 'CENTER',
         checkResize: false,
     },
