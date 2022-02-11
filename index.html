@@ -70,7 +70,30 @@
             opacity: 0;
             transition: opacity 0.33s;
         }
+        .tooltip .tooltiptextdealership {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: -15%;
+            left: 95%;
+
+            opacity: 0;
+            transition: opacity 0.33s;
+        }
         .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextdealership {
             visibility: visible;
             opacity: 1;
         }
@@ -79,7 +102,6 @@
 
         .poi {
             position: absolute;
-            display: inline-block;
         }
 
 
@@ -361,7 +383,7 @@
     <div id="dealership" class="poi">
         <div id="dealershiptooltip" class="tooltip">
         <img src="Dealership.webp" class="dealershipanimation" alt="Dealership">
-        <span class="tooltiptext">Dealership</span>
+        <span class="tooltiptextdealership">Dealership</span>
     </div>
     
 
