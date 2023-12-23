@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Utah Map for CaRP Next</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="CaRP Next Utah Map">
+        <meta property="og:description" content="Utah Map for CaRP Next">
+        <meta property="og:footer" content="Utah Map for CaRP Next">
+        <meta name="theme-color" content="#0b90e4">
+        <meta property="og:image" content="https://utah.toino.net/embed.webp">        
+        <link type="application/json+oembed" href="embed.json">
+        
+
+    <style type="text/css" media="screen">
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+        .header {
+			font-size: 10px;
+			width: 400px; /* Set the desired width */
+			height: 450px; /* Set the desired height */
+			overflow: hidden;
+            position: absolute;
+			padding: 10px;
+            transform: scale(1, 1);
+            z-index: 300;
+            color: #ffffff;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .header:hover {
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #100e0e);
+        }
+
+        .notes {
+
+            position: fixed;
+            padding: 0%;
+            z-index: 300;
+            left: 80%;
+            transform: scale(0.6, 0.6);
+            right: 0;
+            top: 50%;
+            color: #ffffff;
+            text-shadow: 6px 6px 20px #ffffff;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .notes:hover {
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #ffffff);
+        }
+
+
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: hidden;
+            background: #212121FF;
+        }
+
+
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 150px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextnotes {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 10%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextdealership {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: -15%;
+            left: 95%;
+
+            opacity: 0;
+            transition: opacity 0.33s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextnotes {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextdealership {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+
+        .poi {
+            position: absolute;
+        }
+
+
+        .poi .produceranimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+            transition: transform 1s, filter 1s;
+            display: inline-block;
+        }
+        .poi:hover .produceranimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+        }
+
+
+        .poi .refineranimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .refineranimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+        }
+
+
+        .poi .demanderanimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px rgba(255, 68, 0, 0));
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .demanderanimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 50px rgba(255, 68, 0, 0));
+        }
+
+
+        .poi .gasstationanimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .gasstationanimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+        }
+
+
+        .poi .garageanimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .garageanimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+        }
+
+
+        .poi .dealershipanimation {
+            width: 32px;
+            height: 32px;
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .dealershipanimation {
+            transform: scale(1, 1);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+        }
+        </style>
+    </head>
+
+    <body style="overflow: hidden">
+    <div id="contentDiv" class="openseadragon"></div>
+
+  
+    <div id="header" class="header">
+
+        <h1>
+                <p>Credits:<br>
+                    <p>Desoroxxx for sharing the Italy project she made.</p>
+                    </a>
+                    UkDrifter  for making the Utah Map used in the old version.<br>
+                    <br>
+                    Stinger  for making the East Coast and West Coast map.<br>
+                    <br>
+                    DAF Pvnk for choosing the icons and editing them.<br>
+                    <br>
+                    Thanks to iangilman for helping with the arrow overlays.<br>
+                </p>
+            </div>
+        </h1>
+    </div>
+
+    <div class="notes">
+        <h1>
+            <a href="https://discord.gg/AQPyyGddfX">
+                <div id="missiongivertooltip" class="tooltip">
+                <img src="CaRPLogo.webp" alt="CaRP Logo" width="300">
+                <span class="tooltiptext">CaRP Discord</span>
+            </div>
+            <a href="https://desoroxxx.github.io/Portfolio/">
+                <div id="missiongivertooltip" class="tooltip">
+                    <p>Desoroxxx Portfolio</p>
+                <span class="tooltiptextnotes">Link</span>
+            </div>
+            <a href="https://imgur.com/a/84awQlf">
+                <div id="missiongivertooltip" class="tooltip">
+                    <p>Link to Maps made by Stinger</p>
+                <span class="tooltiptextnotes">Link</span>
+            </div>
+			<a href="https://iangilman.com/">
+                <div id="missiongivertooltip" class="tooltip">
+					<p>Ian Gilman Website</p>
+                <span class="tooltiptextnotes">Link</span>
+			</div>
+            <a href="https://openseadragon.github.io">
+                <div id="missiongivertooltip" class="tooltip">
+				<p>Powered by: </p>
+                <img src="https://blogs.library.duke.edu/bitstreams/files/2015/11/openseadragon-logo.png" alt="OpenSeadragon" width="350">
+                <span class="tooltiptextnotes">What made this possible</span>
+            </div>
+        </h1>
+    </div>
+
+
+    <div id="openseadragon" class="fullscreen"></div>
+
+
+    <div id="iron-mine" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="mine.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Iron Mine</span>
+    </div>
+    <div id="gold-mine" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="mine.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Gold Mine</span>
+    </div>
+    <div id="basalt-mine" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="mine.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Basalt Mine</span>
+    </div>
+    <div id="water-source" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="watersource.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Fresh Water Source</span>
+    </div>
+    <div id="concrete-factory" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="factory.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Concrete Plant</span>
+    </div>
+    <div id="transport-hub" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="port.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Transport Hub</span>
+    </div>
+    <div id="tool-manufacturer" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="toolmanufacturer.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Tool Manufacturer</span>
+    </div>
+    <div id="smeltery-iron" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="smeltery.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Iron Smeltery</span>
+    </div>
+    <div id="smeltery-gold" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="smeltery.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Gold Smeltery</span>
+    </div>
+    <div id="construction-business" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="constructionbussiness.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Construction Business</span>
+    </div>
+    <div id="iron-mill" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="ironmill.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Iron Mill</span>
+    </div>
+    <div id="jeweler" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="jewellers.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Jeweler</span>
+    </div>
+    <div id="tuneshop-1" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 1</span>
+    </div>
+    <div id="tuneshop-2" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 2</span>
+    </div>
+    <div id="fuelstation-1" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuelstation 1</span>
+    </div>
+    <div id="fuelstation-2" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuelstation 2</span>
+    </div>
+    <div id="fuelstation-3" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuelstation 3</span>
+    </div>
+    <div id="dealership-1" class="poi">
+        <div id="dealershipanimation" class="tooltip">
+        <img src="Dealership.webp" class="dealershipanimation" alt="dealership">
+        <span class="tooltiptext">Dealership 1</span>
+    </div>
+    <div id="dealership-2" class="poi">
+        <div id="dealershipanimation" class="tooltip">
+        <img src="Dealership.webp" class="dealershipanimation" alt="dealership">
+        <span class="tooltiptext">Dealership 2</span>
+    </div>
+    <div id="silica-ore-quarry" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="mine.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Silica Ore Quarry</span>
+    </div>
+    <div id="fuel-depot" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="fueldepot.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Fuel Depot | Take a Right Here</span>
+    </div>
+    <div id="silica-plant" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="factory.webp" class="refineranimation" alt="dealership">
+        <span class="tooltiptext">Silica Plant</span>
+    </div>
+    <div id="high-street-store" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="highstreetretailer.webp" class="demanderanimation" alt="dealership">
+        <span class="tooltiptext">High Street Store</span>
+    </div>
+    <span id="shop" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="shop.webp" class="produceranimation" alt="dealership">
+        <div class="tooltiptext">Shop
+            <ul>
+                <p>Buys</p>
+                <li>Rockwool</li>
+                <li>Rebar</li>
+                <li>Tool Steel</li>
+                <li>Jewelry</li>
+                <p>Sells</p>
+                <li>Nothing</li>
+              </ul>
+            </span>
+    </div>
+    <div id="nutnbolt-co" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="nutnbolt.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">NutNBolt Co.</span>
+    </div>
+    <div id="universal-store" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="universalstore.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Universal Store</span>
+    </div>
+    <div id="mining-research" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="researchcompany.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Mining Research</span>
+    </div>
+    <div id="questionable-contact" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="sussydealers.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Questionable Contact</span>
+    </div>
+    <div id="barrel-stock" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="refinery.webp" class="produceranimation" alt="dealership">
+        <span class="tooltiptext">Barrel Stock</span>
+    </div>
+    <div id="rockwool-plant" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="rockwool.webp" class="refineranimation" alt="dealership">
+        <span class="tooltiptext">Rockwool Plant</span>
+    </div>
+    <div id="silicon-ltd" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="siliconltd.webp" class="refineranimation" alt="dealership">
+        <span class="tooltiptext">Silicon Ltd.</span>
+    </div>
+    <div id="private-housing" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="housing.webp" class="demanderanimation" alt="dealership">
+        <span class="tooltiptext">Private Housing</span>
+    </div>
+    <div id="mining-hq" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="mininghq.webp" class="refineranimation" alt="dealership">
+        <span class="tooltiptext">Mining HQ</span>
+    </div>
+    <div id="diamond-cutter" class="poi">
+        <div id="refineranimation" class="tooltip">
+        <img src="jewerler.webp" class="refineranimation" alt="dealership">
+        <span class="tooltiptext">Diamond Cutter</span>
+    </div>
+
+
+    <script src="js/anim-event.min.js"></script>
+    <script src="js/leader-line.min.js"></script>
+    <script src="js/openseadragon-html-overlay.js"></script>
+    <script src="openseadragon/openseadragon.min.js"></script>
+    <script type="text/javascript">
+    var viewer = OpenSeadragon({
+        id: "openseadragon",
+        prefixUrl: "openseadragon/images/",
+        blendTime: 1,
+        maxZoomLevel: 12,
+        showFullPageControl: false,
+        overlays: [{
+        id: 'silica-ore-quarry',
+        x: 0.22533952823,
+        y: 0.04444038040,
+        placement: 'CENTER',
+        checkResize: false,
+        viewportUpdateRate: 1,
+    },
+    {
+        id: 'header',
+        x: 1,
+        y: 0.2,
+        placement: 'LEFT',
+        checkResize: true,
+    },
+    {
+        id: 'mining-hq',
+        x: 0.97140814868,
+        y: 0.53913679590,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'private-housing',
+        x: 0.76018584703,
+        y: 0.77249451353,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'silicon-ltd',
+        x: 0.41422444603,
+        y: 0.87527432334,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'rockwool-plant',
+        x: 0.24267333810,
+        y: 0.78346744696,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'barrel-stock',
+        x: 0.19120800572,
+        y: 0.72531089978,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'questionable-contact',
+        x: 0.04038598999,
+        y: 0.77542062911,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mining-research',
+        x: 0.01858470336,
+        y: 0.50658376006,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'universal-store',
+        x: 0.24982130093,
+        y: 0.39319678127,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'nutnbolt-co',
+        x: 0.06576125804,
+        y: 0.22165325530,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'shop',
+        x: 0.26447462473,
+        y: 0.33430870519,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'high-street-store',
+        x: 0.41887062187,
+        y: 0.25530358449,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'silica-plant',
+        x: 0.55253752680,
+        y: 0.52670080468,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuel-depot',
+        x: 0.47498213009,
+        y: 0.02999268471,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'iron-mine',
+        x: 0.533238027,
+        y: 0.084857352,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gold-mine',
+        x: 0.11865618299,
+        y: 0.12618873446,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'basalt-mine',
+        x: 0.51894210150,
+        y: 0.95878566203,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'water-source',
+        x: 0.83166547534,
+        y: 0.37198244331,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'concrete-factory',
+        x: 0.37884203002,
+        y: 0.57827359181,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'transport-hub',
+        x: 0.35775553967,
+        y: 0.74847110461,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tool-manufacturer',
+        x: 0.28824160114,
+        y: 0.54919531822,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'smeltery-iron',
+        x: 0.17526233024,
+        y: 0.27014045355,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'smeltery-gold',
+        x: 0.20506233024,
+        y: 0.26514045355,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'construction-business',
+        x: 0.56290207291,
+        y: 0.37057790783,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'iron-mill',
+        x: 0.61847748392,
+        y: 0.20373079737,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'jeweler',
+        x: 0.61579699786,
+        y: 0.14081931236,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-1',
+        x: 0.23052180129,
+        y: 0.39191660571,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-2',
+        x: 0.86222301644,
+        y: 0.59930504755,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-1',
+        x: 0.11543959971,
+        y: 0.55602048281,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-2',
+        x: 0.86651179414,
+        y: 0.57650329188,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-3',
+        x: 0.25250178699,
+        y: 0.75194586686,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'dealership-1',
+        x: 0.10632594711,
+        y: 0.58113386979,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'dealership-2',
+        x: 0.87312365976,
+        y: 0.49945135333,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'diamond-cutter',
+        x: 0.04860614725,
+        y: 0.82711046086,
+        placement: 'CENTER',
+        checkResize: false,
+    }],
+        tileSources: [{
+          //required	
+          type:       "zoomifytileservice",
+          width:      5596,
+          height:     5468,
+          tilesUrl:   "UtahExtraMap/",
+          //optional
+          tileSize: 256,
+          fileFormat: 'jpg',
+      }]
+    })
+    </script>
+
+        <script type="text/javascript" class="script1">
+			//WORKING
+            /*function test() {
+                const line = new LeaderLine(
+                document.getElementById('iron-mine'),
+                document.getElementById('smeltery'),
+                {dash: {animation: true}, color: 'red', size: 8},
+                );
+				viewer.addHandler('animation', () => {
+					line.position();
+				});
+            }
+			setTimeout(test, 1000)
+			*/
+			
+			
+			// WORKING
+            
+            // All of the locations 
+            var startCoordinates = { x: 100, y: 0 };
+                barrelstock = document.getElementById('barrel-stock'),
+				watersource = document.getElementById('water-source');
+                concretefactory = document.getElementById('concrete-factory'),
+				silicafactory = document.getElementById('silica-plant');
+                transporthub = document.getElementById('transport-hub');
+                constructionbusiness = document.getElementById('construction-business');
+                mininghq = document.getElementById('mining-hq');
+                privatehousing = document.getElementById('private-housing');
+                siliconltd = document.getElementById('silicon-ltd');
+                rockwoolplant = document.getElementById('rockwool-plant');
+                questionablecontact = document.getElementById('questionable-contact');
+                miningresearch = document.getElementById('mining-research');
+                universalstore = document.getElementById('universal-store');
+                nutnboltco = document.getElementById('nutnbolt-co');
+                shop = document.getElementById('shop');
+                highstreetstore = document.getElementById('high-street-store');
+                fueldepot = document.getElementById('fuel-depot');
+                ironmine = document.getElementById('iron-mine');
+                goldmine = document.getElementById('gold-mine');
+                smelteryiron = document.getElementById('smeltery-iron');
+                basaltmine = document.getElementById('basalt-mine');
+                toolmanufacturer = document.getElementById('tool-manufacturer');
+                smelterygold = document.getElementById('smeltery-gold');
+                ironmill = document.getElementById('iron-mill');
+                jeweler = document.getElementById('jeweler');
+                diamondcutter = document.getElementById('diamond-cutter');
+                fuelstation1 = document.getElementById('fuelstation-1');
+                fuelstation2 = document.getElementById('fuelstation-2');
+                fuelstation3 = document.getElementById('fuelstation-3');
+                silicaquarry = document.getElementById('silica-ore-quarry');
+
+
+			// Wait for HTML document to get ready
+			window.addEventListener('load', function ironore() {
+
+				// New leader line has red color and size 8.
+				const emptybarrel = new LeaderLine(
+					barrelstock,
+					watersource,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Empty barrel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const waterbarrel = new LeaderLine(
+					watersource,
+					concretefactory,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Water barrel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const waterbarrel1 = new LeaderLine(
+					watersource,
+                    transporthub,
+					{
+					  dash: { animation: true},
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Water barrel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const waterbarrel2 = new LeaderLine(
+					watersource,
+                    silicafactory,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Water barrel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const silicaore = new LeaderLine(
+					silicaquarry,
+                    silicafactory,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Silica Ore', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const concrete = new LeaderLine(
+					concretefactory,
+                    constructionbusiness,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Concrete', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const silicasand = new LeaderLine(
+					silicafactory,
+                    siliconltd,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Silica Sand', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const sand = new LeaderLine(
+					transporthub,
+                    siliconltd,
+					{
+					  dash: { animation: true },
+					  color: 'purple',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Sand', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const silicone = new LeaderLine(
+					siliconltd,
+                    transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Silicone', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const silicone1 = new LeaderLine(
+					siliconltd,
+                    universalstore,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Silicone', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const shed = new LeaderLine(
+					constructionbusiness,
+                    privatehousing,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Shed', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const shed1 = new LeaderLine(
+					constructionbusiness,
+                    transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Shed', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const basaltrock = new LeaderLine(
+					basaltmine,
+                    rockwoolplant,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Basalt Rock', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rawdiamonds = new LeaderLine(
+					questionablecontact,
+                    diamondcutter,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Raw Diamonds', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const goldore = new LeaderLine(
+					goldmine,
+                    smelterygold,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Gold Ore', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const ironore = new LeaderLine(
+					ironmine,
+					smelteryiron,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Iron Ore', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+				const ironingot = new LeaderLine(
+					smelteryiron,
+					ironmill,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Iron Ingot', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+			
+                const ironingot1 = new LeaderLine(
+					smelteryiron,
+					nutnboltco,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Iron Ingot', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const fuel = new LeaderLine(
+					fueldepot,
+					fuelstation1,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Fuel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+                
+                  const fuel1 = new LeaderLine(
+					fueldepot,
+					fuelstation2,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Fuel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const fuel2 = new LeaderLine(
+					fueldepot,
+					fuelstation3,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Fuel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const diamonds = new LeaderLine(
+					diamondcutter,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Diamonds', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const goldscraps = new LeaderLine(
+					smelterygold,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Gold Scraps', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+                  
+                  const goldingot = new LeaderLine(
+					smelterygold,
+					jeweler,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Gold Ingot', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const slag = new LeaderLine(
+					ironmill,
+					rockwoolplant,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Slag', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rebar = new LeaderLine(
+					ironmill,
+					shop,
+					{
+					  dash: { animation: true },
+					  color: 'blue',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Rebar', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rebar1 = new LeaderLine(
+					ironmill,
+					constructionbusiness,
+					{
+					  dash: { animation: true },
+					  color: 'blue',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Rebar', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rebar2 = new LeaderLine(
+					ironmill,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'blue',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Rebar', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const toolsteel = new LeaderLine(
+					ironmill,
+					shop,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tool Steel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const toolsteel1 = new LeaderLine(
+					ironmill,
+					toolmanufacturer,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tool Steel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'fluid',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const toolsteel2 = new LeaderLine(
+					ironmill,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tool Steel', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'fluid',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const jewelry = new LeaderLine(
+					jeweler,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Jewelry', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const jewelry1 = new LeaderLine(
+					jeweler,
+					shop,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Jewelry', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rockwool = new LeaderLine(
+					rockwoolplant,
+					shop,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Rockwool', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const recycledplastic = new LeaderLine(
+					transporthub,
+					nutnboltco,
+					{
+					  dash: { animation: true },
+					  color: 'blue',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Recycled Plastic', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const ecopackaging = new LeaderLine(
+					transporthub,
+					nutnboltco,
+					{
+					  dash: { animation: true },
+					  color: 'blue',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Eco Packaging', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const rubberparts = new LeaderLine(
+					transporthub,
+					toolmanufacturer,
+					{
+					  dash: { animation: true },
+					  color: 'green',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Rubber Parts', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const woodenbox = new LeaderLine(
+					transporthub,
+					toolmanufacturer,
+					{
+					  dash: { animation: true },
+					  color: 'green',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Wooden Box', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const boxoffasteners = new LeaderLine(
+					nutnboltco,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Box of Fasteners', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const boxoffasteners1 = new LeaderLine(
+					nutnboltco,
+					universalstore,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Box of Fasteners', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const tools = new LeaderLine(
+					toolmanufacturer,
+					universalstore,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tools', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const tools1 = new LeaderLine(
+					toolmanufacturer,
+					mininghq,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tools', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const tools2 = new LeaderLine(
+					toolmanufacturer,
+					transporthub,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Tools', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const woodplanks = new LeaderLine(
+					transporthub,
+					constructionbusiness,
+					{
+					  dash: { animation: true },
+					  color: 'orange',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Wood planks', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const offroadtires = new LeaderLine(
+					transporthub,
+					mininghq,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Offroad Tires', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const heavydutyparts = new LeaderLine(
+					transporthub,
+					mininghq,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Heavy Duty Parts', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const toiletpaper = new LeaderLine(
+					transporthub,
+					mininghq,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Poilet Paper', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const heavyequipment = new LeaderLine(
+					mininghq,
+					privatehousing,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Heavy Equipment', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const heavyequipment1 = new LeaderLine(
+					mininghq,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Heavy Equipment', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const paper = new LeaderLine(
+					transporthub,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('paper', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+                      startSocketGravity: [50, -100],
+                      endSocketGravity: [-300, -300],
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const deluxemeals = new LeaderLine(
+					transporthub,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Deluxe Meals', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const patents = new LeaderLine(
+					transporthub,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Patents', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+                      startSocketGravity: [-300, 172],
+                      endSocketGravity: [300, 300],
+                      endSocket: 'left',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const electronics = new LeaderLine(
+					transporthub,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Electronics', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'straight',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const diamondtiptools = new LeaderLine(
+					transporthub,
+					miningresearch,
+					{
+					  dash: { animation: true },
+					  color: 'yellow',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Diamond-Tip Tools', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'magnet',
+                      startSocketGravity: [-200, 100],
+                      endSocketGravity: [300, 300],
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+                  const miningmap = new LeaderLine(
+					miningresearch,
+					highstreetstore,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Mining Map', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
+
+				document.getElementById('barrel-stock').addEventListener('mouseover', function() {
+                    emptybarrel.show();
+				});
+
+				document.getElementById('barrel-stock').addEventListener('mouseout', function() {
+                    emptybarrel.hide();
+				});
+                document.getElementById('water-source').addEventListener('mouseover', function() {
+                    waterbarrel.show();
+				});
+
+				document.getElementById('water-source').addEventListener('mouseout', function() {
+                    waterbarrel.hide();
+				});
+
+                document.getElementById('water-source').addEventListener('mouseover', function() {
+                    waterbarrel1.show();
+				});
+
+				document.getElementById('water-source').addEventListener('mouseout', function() {
+                    waterbarrel1.hide();
+				});
+
+                document.getElementById('water-source').addEventListener('mouseover', function() {
+                    waterbarrel2.show();
+				});
+
+				document.getElementById('water-source').addEventListener('mouseout', function() {
+                    waterbarrel2.hide();
+				});
+
+                document.getElementById('silica-ore-quarry').addEventListener('mouseover', function() {
+                    silicaore.show();
+				});
+
+				document.getElementById('silica-ore-quarry').addEventListener('mouseout', function() {
+                    silicaore.hide();
+				});
+
+                document.getElementById('concrete-factory').addEventListener('mouseover', function() {
+                    concrete.show();
+				});
+
+				document.getElementById('concrete-factory').addEventListener('mouseout', function() {
+                    concrete.hide();
+				});
+
+                document.getElementById('silica-plant').addEventListener('mouseover', function() {
+                    silicasand.show();
+				});
+
+				document.getElementById('silica-plant').addEventListener('mouseout', function() {
+                    silicasand.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    sand.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    sand.hide();
+				});
+
+                document.getElementById('silicon-ltd').addEventListener('mouseover', function() {
+                    silicone.show();
+				});
+
+				document.getElementById('silicon-ltd').addEventListener('mouseout', function() {
+                    silicone.hide();
+				});
+
+                document.getElementById('silicon-ltd').addEventListener('mouseover', function() {
+                    silicone1.show();
+				});
+
+				document.getElementById('silicon-ltd').addEventListener('mouseout', function() {
+                    silicone1.hide();
+				});
+
+                document.getElementById('construction-business').addEventListener('mouseover', function() {
+                    shed.show();
+				});
+
+				document.getElementById('construction-business').addEventListener('mouseout', function() {
+                    shed.hide();
+				});
+
+                document.getElementById('construction-business').addEventListener('mouseover', function() {
+                    shed1.show();
+				});
+
+				document.getElementById('construction-business').addEventListener('mouseout', function() {
+                    shed1.hide();
+				});
+
+                document.getElementById('basalt-mine').addEventListener('mouseover', function() {
+                    basaltrock.show();
+				});
+
+				document.getElementById('basalt-mine').addEventListener('mouseout', function() {
+                    basaltrock.hide();
+				});
+
+                document.getElementById('questionable-contact').addEventListener('mouseover', function() {
+                    rawdiamonds.show();
+				});
+
+				document.getElementById('questionable-contact').addEventListener('mouseout', function() {
+                    rawdiamonds.hide();
+				});
+                
+                document.getElementById('gold-mine').addEventListener('mouseover', function() {
+                    goldore.show();
+				});
+
+				document.getElementById('gold-mine').addEventListener('mouseout', function() {
+                    goldore.hide();
+				});
+                
+                document.getElementById('smeltery-iron').addEventListener('mouseover', function() {
+                    ironingot.show();
+				});
+
+				document.getElementById('smeltery-iron').addEventListener('mouseout', function() {
+                    ironingot.hide();
+				});
+
+                document.getElementById('smeltery-iron').addEventListener('mouseover', function() {
+                    ironingot1.show();
+				});
+
+				document.getElementById('smeltery-iron').addEventListener('mouseout', function() {
+                    ironingot1.hide();
+				});
+
+                document.getElementById('iron-mine').addEventListener('mouseover', function() {
+                    ironore.show();
+				});
+
+				document.getElementById('iron-mine').addEventListener('mouseout', function() {
+                    ironore.hide();
+				});
+
+                document.getElementById('fuel-depot').addEventListener('mouseover', function() {
+                    fuel.show();
+				});
+
+				document.getElementById('fuel-depot').addEventListener('mouseout', function() {
+                    fuel.hide();
+				});
+
+                document.getElementById('fuel-depot').addEventListener('mouseover', function() {
+                    fuel1.show();
+				});
+
+				document.getElementById('fuel-depot').addEventListener('mouseout', function() {
+                    fuel1.hide();
+				});
+
+                document.getElementById('fuel-depot').addEventListener('mouseover', function() {
+                    fuel2.show();
+				});
+
+				document.getElementById('fuel-depot').addEventListener('mouseout', function() {
+                    fuel2.hide();
+				});
+
+                document.getElementById('diamond-cutter').addEventListener('mouseover', function() {
+                    diamonds.show();
+				});
+
+				document.getElementById('diamond-cutter').addEventListener('mouseout', function() {
+                    diamonds.hide();
+				});
+                
+                document.getElementById('smeltery-gold').addEventListener('mouseover', function() {
+                    goldscraps.show();
+				});
+
+				document.getElementById('smeltery-gold').addEventListener('mouseout', function() {
+                    goldscraps.hide();
+				});
+
+                document.getElementById('smeltery-gold').addEventListener('mouseover', function() {
+                    goldingot.show();
+				});
+
+				document.getElementById('smeltery-gold').addEventListener('mouseout', function() {
+                    goldingot.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    slag.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    slag.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    rebar.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    rebar.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    rebar1.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    rebar1.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    rebar2.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    rebar2.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    toolsteel.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    toolsteel.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    toolsteel1.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    toolsteel1.hide();
+				});
+
+                document.getElementById('iron-mill').addEventListener('mouseover', function() {
+                    toolsteel2.show();
+				});
+
+				document.getElementById('iron-mill').addEventListener('mouseout', function() {
+                    toolsteel2.hide();
+				});
+
+                document.getElementById('jeweler').addEventListener('mouseover', function() {
+                    jewelry.show();
+				});
+
+				document.getElementById('jeweler').addEventListener('mouseout', function() {
+                    jewelry.hide();
+				});
+
+                document.getElementById('jeweler').addEventListener('mouseover', function() {
+                    jewelry1.show();
+				});
+
+				document.getElementById('jeweler').addEventListener('mouseout', function() {
+                    jewelry1.hide();
+				});
+
+                document.getElementById('rockwool-plant').addEventListener('mouseover', function() {
+                    rockwool.show();
+				});
+
+				document.getElementById('rockwool-plant').addEventListener('mouseout', function() {
+                    rockwool.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    recycledplastic.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    recycledplastic.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    ecopackaging.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    ecopackaging.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    rubberparts.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    rubberparts.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    woodenbox.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    woodenbox.hide();
+				});
+
+                document.getElementById('nutnbolt-co').addEventListener('mouseover', function() {
+                    boxoffasteners.show();
+				});
+
+				document.getElementById('nutnbolt-co').addEventListener('mouseout', function() {
+                    boxoffasteners.hide();
+				});
+
+                document.getElementById('nutnbolt-co').addEventListener('mouseover', function() {
+                    boxoffasteners1.show();
+				});
+
+				document.getElementById('nutnbolt-co').addEventListener('mouseout', function() {
+                    boxoffasteners1.hide();
+				});
+
+                document.getElementById('tool-manufacturer').addEventListener('mouseover', function() {
+                    tools.show();
+				});
+
+				document.getElementById('tool-manufacturer').addEventListener('mouseout', function() {
+                    tools.hide();
+				});
+
+                document.getElementById('tool-manufacturer').addEventListener('mouseover', function() {
+                    tools1.show();
+				});
+
+				document.getElementById('tool-manufacturer').addEventListener('mouseout', function() {
+                    tools1.hide();
+				});
+
+                document.getElementById('tool-manufacturer').addEventListener('mouseover', function() {
+                    tools2.show();
+				});
+
+				document.getElementById('tool-manufacturer').addEventListener('mouseout', function() {
+                    tools2.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    woodplanks.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    woodplanks.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    offroadtires.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    offroadtires.hide();
+				});
+
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    heavydutyparts.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    heavydutyparts.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    toiletpaper.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    toiletpaper.hide();
+				});
+
+                document.getElementById('mining-hq').addEventListener('mouseover', function() {
+                    heavyequipment.show();
+				});
+
+				document.getElementById('mining-hq').addEventListener('mouseout', function() {
+                    heavyequipment.hide();
+				});
+
+                document.getElementById('mining-hq').addEventListener('mouseover', function() {
+                    heavyequipment1.show();
+				});
+
+				document.getElementById('mining-hq').addEventListener('mouseout', function() {
+                    heavyequipment1.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    paper.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    paper.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    deluxemeals.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    deluxemeals.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    patents.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    patents.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    electronics.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    electronics.hide();
+				});
+
+                document.getElementById('transport-hub').addEventListener('mouseover', function() {
+                    diamondtiptools.show();
+				});
+
+				document.getElementById('transport-hub').addEventListener('mouseout', function() {
+                    diamondtiptools.hide();
+				});
+
+                document.getElementById('mining-research').addEventListener('mouseover', function() {
+                    miningmap.show();
+				});
+
+				document.getElementById('mining-research').addEventListener('mouseout', function() {
+                    miningmap.hide();
+				});
+
+                
+				//Update the location of the line while panning/zooming
+				setInterval(() => {
+					emptybarrel.position();
+                    waterbarrel.position();
+                    waterbarrel1.position();
+                    waterbarrel2.position();
+                    silicaore.position();
+                    concrete.position();
+                    silicasand.position();
+                    silicone.position();
+                    silicone1.position();
+                    shed.position();
+                    shed1.position();
+                    basaltrock.position();
+                    rawdiamonds.position();
+                    goldore.position();
+                    ironingot.position();
+                    ironingot1.position();
+                    ironore.position();
+                    fuel.position();
+                    fuel1.position();
+                    fuel2.position();
+                    diamonds.position();
+                    goldscraps.position();
+                    goldingot.position();
+                    slag.position();
+                    sand.position();
+                    rebar.position();
+                    rebar1.position();
+                    rebar2.position();
+                    toolsteel.position();
+                    toolsteel1.position();
+                    toolsteel2.position();
+                    jewelry.position();
+                    jewelry1.position();
+                    rockwool.position();
+                    recycledplastic.position();
+                    ecopackaging.position();
+                    rubberparts.position();
+                    woodenbox.position();
+                    boxoffasteners.position();
+                    boxoffasteners1.position();
+                    tools.position();
+                    tools1.position();
+                    tools2.position();
+                    woodplanks.position();
+                    offroadtires.position();
+                    heavydutyparts.position();
+                    toiletpaper.position();
+                    heavyequipment.position();
+                    heavyequipment1.position();
+                    paper.position();
+                    deluxemeals.position();
+                    patents.position();
+                    electronics.position();
+                    diamondtiptools.position();
+                    miningmap.position();
+				}, 200);
+                
+			});
+
+			
+        </script>
+    </body>
+</html>

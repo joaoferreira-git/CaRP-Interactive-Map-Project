@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>East Coast Map for CaRP Next</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="East Coast Map for CaRP Next">
+        <meta property="og:description" content="East Coast Map for CaRP Next">
+        <meta property="og:footer" content="East Coast Map for CaRP Next">
+        <meta name="theme-color" content="#0b93ec">
+        <meta property="og:image" content="https://eastcoast.toino.net/embed.webp">        
+        <link type="application/json+oembed" href="embed.json">
+        
+
+    <style type="text/css" media="screen">
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+        .header {
+            position: fixed;
+            padding: 0%;
+            z-index: 300;
+            left: 78%;
+            transform: scale(0.5, 0.5);
+            right: 0;
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            opacity: 0.75;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .header:hover {
+            transform: scale(0.75, 0.75);
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #100e0e);
+        }
+
+
+        .credits {
+            position: fixed;
+            padding: 0%;
+            z-index: 300;
+            left: 80%;
+            transform: scale(0.6, 0.6);
+            right: 0;
+            top: 0%;
+            color: #100e0e;
+            text-shadow: 6px 6px 20px #ffffff;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .credits:hover {
+            transform: scale(0.75, 0.75);
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #ffffff);
+        }
+        
+
+        .notes {
+            position: fixed;
+            padding: 0%;
+            z-index: 300;
+            left: 80%;
+            transform: scale(0.6, 0.6);
+            right: 0;
+            top: 36%;
+            color: #100e0e;
+            text-shadow: 6px 6px 20px #ffffff;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .notes:hover {
+            transform: scale(0.75, 0.75);
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #ffffff);
+        }
+
+
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            background: #FFFCFC;
+        }
+
+
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 150px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextnotes {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 10%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextdealership {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: -15%;
+            left: 95%;
+
+            opacity: 0;
+            transition: opacity 0.33s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextnotes {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextdealership {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+
+        .poi {
+            position: absolute;
+        }
+
+
+        .poi .produceranimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .produceranimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+        }
+
+
+        .poi .refineranimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .refineranimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+        }
+
+
+        .poi .demanderanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px rgba(255, 68, 0, 0));
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .demanderanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 50px rgba(255, 68, 0, 0));
+        }
+
+
+        .poi .gasstationanimation {
+            transform: scale(0.2, 0.2);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .gasstationanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+        }
+
+
+        .poi .garageanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .garageanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+        }
+
+
+        .poi .dealershipanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .dealershipanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+        }
+        </style>
+    </head>
+
+    <body>
+
+
+        
+    <div class="header">
+        <h1>
+            <a href="https://discord.gg/AQPyyGddfX">
+                <div id="missiongivertooltip" class="tooltip">
+                <img src="CaRPLogo.webp" alt="CaRP Logo">
+                <span class="tooltiptext">CaRP Discord</span>
+            </div>
+            </a>
+        </h1>
+    </div>
+
+
+    <div class="credits">
+        <h1>
+            <div id="missiongivertooltip" class="tooltip">
+                <p>Credits:<br>
+                    <a href="https://desoroxxx.github.io/Portfolio/">
+                        <p>Desoroxxx for sharing the Italy project she made.</p>
+                    </a>
+                    UkDrifter  for making the Utah Map used in the old version.<br>
+                    <br>
+                    Stinger  for making the East Coast and West Coast map.<br>
+                    <br>
+                    DAF Pvnk for choosing the icons and editing them.
+                </p>
+            </div>
+        </h1>
+    </div>
+
+
+    <div class="notes">
+        <h1>
+            <a href="https://imgur.com/a/84awQlf">
+                <div id="missiongivertooltip" class="tooltip">
+                    <p>Link to Maps made by Stinger</p>
+                <span class="tooltiptextnotes">Notes</span>
+            </div>
+        </h1>
+    </div>
+
+
+
+    <div id="openseadragon1" class="fullscreen"></div>
+
+
+
+    <div id="lumberyard" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="lumberyard.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Lumberyard
+            <ul>
+                <p>Sells</p>
+                    <li>Logs</li>
+                    </ul>
+                
+        </span>
+    </div>
+    <div id="eco-pak" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="recycling-eco-plant.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Eco-Pak
+            <ul>
+                <p>Sells</p>
+                    <li>Eco Packaging</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="farm" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="farm.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Farm
+            <ul>
+                <p>Sells</p>
+                    <li>Wheat</li>
+                    <li>Milk</li>
+                    <li>Spice</li>
+                    </ul>
+        </span>
+    </div>   
+    <div id="butcher" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="butcher.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Butcher
+            <ul>
+                <p>Sells</p>
+                    <li>Raw Meat</li>
+                    </ul>
+                
+        </span>
+    </div>
+    <div id="river-fisher" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="fishers.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">River Fisher
+            <ul>
+                <p>Sells</p>
+                    <li>Carp</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="fuel-depot" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="fueldepot.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuel Depot
+            <ul>
+                <p>Sells</p>
+                    <li>Fuel</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="transport-hub" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="port.webp" class="refineranimation" alt="Mission Giver">
+        <span class="tooltiptext">Transport Hub
+            <ul>
+                <p>Buys</p>
+                    <li>Eco Packaging</li>
+                    <li>Wooden Box</li>
+                    <li>Wood Plank</li>
+                    <li>Toilet Paper</li>
+                    <li>Paper</li>
+                    <li>Deluxe Meals</li>
+                    <li>Patents</li>
+
+                <p>Sells</p>
+                    <li>Anime Figures</li>
+                    <li>Diamonds</li>
+                    <li>Diamond Tip Tools</li>
+                    <li>Electronics</li>
+                    <li>Glass</li>
+                    <li>Gold Scraps</li>
+                    <li>Oil Lubricants</li>
+                    <li>Research Note</li>
+                    <li>Shed</li>
+                    <li>Water Barrel</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="tuneshop-1" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 1</span>
+    </div>
+    <div id="tuneshop-2" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 2</span>
+    </div>
+    <div id="tuneshop-3" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 3</span>
+    </div>
+    <div id="tuneshop-4" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 4</span>
+    </div>
+    <div id="fuelstation-1" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuelstation 1
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="fuelstation-2" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuelstation 2
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="dealership-1" class="poi">
+        <div id="dealershipanimation" class="tooltip">
+        <img src="Dealership.webp" class="dealershipanimation" alt="dealership">
+        <span class="tooltiptext">Dealership 1</span>
+    </div>
+    <div id="private-housing" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="housing.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Private Housing
+            <ul>
+                <p>Buys</p>
+                    <li>Patents</li>
+                    <li>Book</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="universal-store" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="universalstore.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Universal Store
+            <ul>
+                <p>Buys</p>
+                    <li>Gift</li>
+                    <li>Paper</li>
+                    <li>Toilet Paper</li>
+                    <li>Deluxe Meals</li>
+                    </ul>
+                
+        </span>
+    </div>
+    <div id="shop" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="shop.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Shop
+            <ul>
+                <p>Buys</p>
+                    <li>Wooden Box</li>
+                    <li>Wood Pulp</li>
+                    <li>Pastry</li>
+                    <li>Lunch</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="carpenter" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="carpenter.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Carpenter
+            <ul>
+                <p>Buys</p>
+                    <li>Wood Planks</li>
+                    <li>Bottled Water</li>
+                    <li>Packaged Fish</li>
+                <p>Sells</p>
+                    <li>Wooden Box</li>
+                    <li>Wood Pulp</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="research-company" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="researchcompany.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Research Company
+            <ul>
+                <p>Buys</p>
+                    <li>Diamonds</li>
+                    <li>Research Note</li>
+                    <li>Bottled Water</li>
+                    <li>Paper</li>
+                    <li>Gift</li>
+                <p>Sells</p>
+                    <li>Patents</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="food-supplier" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="foodsupplier.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Food Supplier
+            <ul>
+                <p>Buys</p>
+                    <li>Pastry</li>
+                    <li>Bottled Water</li>
+                    <li>Eco Packaging</li>
+                    <li>Lunch</li>
+                <p>Sells</p>
+                    <li>Deluxe Meals</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="high-end-sheds-co" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="highendsheds.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">High-End Sheds Co.
+            <ul>
+                <p>Buys</p>
+                    <li>Patents</li>
+                    <li>Glass</li>
+                    <li>Shed</li>
+                    <li>Electronics</li>
+                    <li>Diamond Tip Tools</li>
+                <p>Sells</p>
+                    <li>High End Shed</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="gift-artisan" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="giftartisan.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Gift Artisan
+            <ul>
+                <p>Buys</p>
+                    <li>Wooden Box</li>
+                    <li>Anime Figures</li>
+                    <li>Gold Scraps</li>
+                <p>Sells</p>
+                    <li>Gift</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="printing-shop" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="printshop.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Printing Shop
+            <ul>
+                <p>Buys</p>
+                    <li>Paper</li>
+                    <li>Packaged Meat</li>
+                    <li>Oil Lubricants</li>
+                <p>Sells</p>
+                    <li>Book</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="bakery" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="bakery.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Bakery
+            <ul>
+                <p>Buys</p>
+                    <li>Flour</li>
+                    <li>Milk</li>
+                <p>Sells</p>
+                    <li>Pastry</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="paper-mill" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="papermill.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Paper Mill
+            <ul>
+                <p>Buys</p>
+                    <li>Wood Bark</li>
+                    <li>Wood Pulp</li>
+                    <li>Water Barrel</li>
+                <p>Sells</p>
+                    <li>Paper</li>
+                    <li>Toilet Paper</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="meat-processing-plant" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="meatprocessingplant.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Meat Processing Plant
+            <ul>
+                <p>Buys</p>
+                    <li>Spice</li>
+                    <li>Raw Meat</li>
+                <p>Sells</p>
+                    <li>Packaged Meat</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="high-street-store" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="highstreetretailer.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">High Street Store
+            <ul>
+                <p>Buys</p>
+                    <li>High End Shed</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="convenience-food-inc" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="conveniencefoodinc.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Convenience Food Inc.
+            <ul>
+                <p>Buys</p>
+                    <li>Eco Packaging</li>
+                    <li>Spice</li>
+                    <li>Packaged Fish</li>
+                    <li>Packaged Meat</li>
+                <p>Sells</p>
+                    <li>Lunch</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="sawmill" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="sawmill.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Sawmill
+            <ul>
+                <p>Buys</p>
+                    <li>Logs</li>
+                <p>Sells</p>
+                    <li>Wood Bark</li>
+                    <li>Wood Planks</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="mill" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="mill.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Mill
+            <ul>
+                <p>Buys</p>
+                    <li>Wheat</li>
+                <p>Sells</p>
+                    <li>Flour</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="mineral-water-co" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="watersource.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Mineral Water Co.
+            <ul>
+                <p>Buys</p>
+                    <li>Eco Packaging</li>
+                <p>Sells</p>
+                    <li>Bottled Water</li>
+                    </ul>
+        </span>
+    </div>
+    <div id="fish-processing-plant" class="poi">
+        <div id="demanderanimation" class="tooltip">
+        <img src="fishprocessingplant.webp" class="demanderanimation" alt="Mission Giver">
+        <span class="tooltiptext">Fish Processing Plant
+            <ul>
+                <p>Buys</p>
+                    <li>Carp</li>
+                    <li>Spice</li>
+                <p>Sells</p>
+                    <li>Packaged Fish</li>
+                    </ul>
+        </span>
+    </div>
+
+
+
+
+    <script src="openseadragon/openseadragon.min.js"></script>
+    <script type="text/javascript">
+    var viewer = window.OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "openseadragon/images/",
+        blendTime: 1,
+        maxZoomLevel: 12,
+        showFullPageControl: false,
+        tileSources: [{
+          //required	
+          type:       "zoomifytileservice",
+          width:      8192,
+          height:     8192,
+          tilesUrl:   "eastcoast/",
+          //optional
+          tileSize: 256,
+          fileFormat: 'jpg',
+      }],
+
+      overlays: [{
+        id: 'lumberyard',
+        x: 0.76733398438,
+        y: 0.20336914063,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fish-processing-plant',
+        x: 0.08789062500,
+        y: 0.12011718750,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mineral-water-co',
+        x: 0.44042968750,
+        y: 0.03417968750,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'mill',
+        x: 0.77294921875,
+        y: 0.86914062500,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'sawmill',
+        x: 0.59069824219,
+        y: 0.88659667969,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'convenience-food-inc',
+        x: 0.42895507813,
+        y: 0.90637207031,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'high-street-store',
+        x: 0.23608398438,
+        y: 0.90185546875,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'meat-processing-plant',
+        x: 0.91015625000,
+        y: 0.11035156250,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'paper-mill',
+        x: 0.39160156250,
+        y: 0.69531250000,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'bakery',
+        x: 0.86621093750,
+        y: 0.66796875000,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'printing-shop',
+        x: 0.88232421875,
+        y: 0.60180664063,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'gift-artisan',
+        x: 0.78564453125,
+        y: 0.50512695313,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'high-end-sheds-co',
+        x: 0.56958007813,
+        y: 0.49365234375,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'food-supplier',
+        x: 0.46118164063,
+        y: 0.45776367188,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'river-fisher',
+        x: 0.75415039063,
+        y: 0.60815429688,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'farm',
+        x: 0.20512011719,
+        y: 0.66976464844,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'butcher',
+        x: 0.54248046875,
+        y: 0.35388183594,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'research-company',
+        x: 0.97900390625,
+        y: 0.18457031250,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'carpenter',
+        x: 0.22558593750,
+        y: 0.13452148438,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'eco-pak',
+        x: 0.88500976563,
+        y: 0.62329101563,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuel-depot',
+        x: 0.07177734375,
+        y: 0.52685546875,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'shop',
+        x: 0.87500000000,
+        y: 0.05468750000,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'transport-hub',
+        x: 0.71484375000,
+        y: 0.96752929688,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-1',
+        x: 0.11022949219,
+        y: 0.26184082031,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-2',
+        x: 0.04028320313,
+        y: 0.84497070313,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-3',
+        x: 0.45288085938,
+        y: 0.88415527344,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-4',
+        x: 0.84643554688,
+        y: 0.52832031250,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-1',
+        x: 0.12377929688,
+        y: 0.25927734375,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-2',
+        x: 0.89001464844,
+        y: 0.88745117188,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'dealership-1',
+        x: 0.84265136719,
+        y: 0.66650390625,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'private-housing',
+        x: 0.37243652344,
+        y: 0.97570800781,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'universal-store',
+        x: 0.11340332031,
+        y: 0.22485351563,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+
+
+    ]});
+    </script>
+    </body>
+</html>
