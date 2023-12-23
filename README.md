@@ -1,7 +1,7 @@
-# CaRPMapProject
+# CaRP Interactive Maps Project
 
-As of modern CaRP this map is not really necessary anymore, so it is no longer updated.
+This is not the final version and its still in alpha.
 
-The only reason it is still up is for portfolio reasons.
+All maps updated to the latest version of CaRP Next, some still in development. 
 
 CaRP Discord(https://discord.gg/AQPyyGddfX)
