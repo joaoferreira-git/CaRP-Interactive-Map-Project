@@ -1,14 +1,35 @@
-# CaRP Interactive Maps Project
+# 🌍 CaRP Interactive Maps Project 
+### Still in development 🚧
+## 🚀 Planned Updates 
 
-This is not the final version and its still in alpha.
+- ⬜️ All maps in a single link.
+- ⬜️ Improve performance.
+- ✅ Make the Credits section fixed so that it doesn't cover the map.
+- ⬜️ Make the Links section fixed so that it doesn't cover the map.
+- ✅ Find a way to integrate the Flow Chart into the maps. (Working on Utah, Performance Issues)
+- ⬜️ Finish adding all of the routes from the Flow Chart.
+- ⬜️ Add to the Overlay the products that each location Buys and Sells. (Utah Only)
 
-All maps updated to the latest version of CaRP Next:
+## 🛠️ Work in Progress 
 
-- https://eastcoast.toino.net/
-- https://utah.toino.net/
-- https://westcoast.toino.net/ 
+- ⬜️ Find a way to integrate the Flow Chart into the maps.
+- ⬜ Add to the Overlay the products that each location Buys and Sells. (Working on Utah)
+- ⬜️ Clean and comment the code.
 
-The rest of them are either not in use in current CaRP Next or need to be finished.
+## 🐞 Known Bugs 
 
+- ✅ ~~Issue #1: Map zooms to the top left of the screen on mobile devices.~~ (Fixed but can't remember how)
+- ⬜️ Issue #2: Map performance is really bad on mobile devices in Utah map.
 
-CaRP Discord(https://discord.gg/AQPyyGddfX)
+## 🗺️ Available Maps 
+
+- **East Coast** - https://eastcoast.toino.net/
+- **Utah** - https://utah.toino.net/
+- **West Coast** - https://westcoast.toino.net
+  
+## 🚧 Maps Still in Development 
+- ![](https://geps.dev/progress/50) **Jungle Rock Island**
+- ![](https://geps.dev/progress/0) **Jonhson Valley**
+- ![](https://geps.dev/progress/0) **Italy**
+
+## CaRP Discord(https://discord.gg/AQPyyGddfX)
