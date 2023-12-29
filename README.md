@@ -24,9 +24,10 @@
 ## 🗺️ Available Maps 
 
 - **East Coast** - https://eastcoast.toino.net/
+- **Jungle Rock Island** - https://junglerockisland.toino.net
 - **Utah** - https://utah.toino.net/
 - **West Coast** - https://westcoast.toino.net
-- **Jungle Rock Island** - https://junglerockisland.toino.net
+
   
 ## 🚧 Maps Still in Development 
 - ![](https://geps.dev/progress/0) **Jonhson Valley**
