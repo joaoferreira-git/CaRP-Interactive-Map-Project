@@ -24,13 +24,17 @@
 ## 🗺️ Available Maps 
 
 - **East Coast** - https://eastcoast.toino.net/
+- **Italy** - https://italy.toino.net
+- **Jonhson Valley** - https://jonhsonvalley.toino.net
 - **Jungle Rock Island** - https://junglerockisland.toino.net
 - **Utah** - https://utah.toino.net/
 - **West Coast** - https://westcoast.toino.net
 
   
 ## 🚧 Maps Still in Development 
-- ![](https://geps.dev/progress/0) **Jonhson Valley**
-- ![](https://geps.dev/progress/0) **Italy**
+- ![](https://geps.dev/progress/0) **Update East Coast**
+- ![](https://geps.dev/progress/0) **Update Utah**
+- ![](https://geps.dev/progress/100) **Jonhson Valley**
+- ![](https://geps.dev/progress/100) **Italy**
 
 ## CaRP Discord(https://discord.gg/AQPyyGddfX)
