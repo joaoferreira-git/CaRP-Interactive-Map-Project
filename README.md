@@ -8,12 +8,11 @@
 - ⬜️ Make the Links section fixed so that it doesn't cover the map.
 - ✅ Find a way to integrate the Flow Chart into the maps. (Working on Utah, Performance Issues)
 - ⬜️ Finish adding all of the routes from the Flow Chart.
-- ⬜️ Add to the Overlay the products that each location Buys and Sells. (Utah Only)
+- ✅ Add to the Overlay the products that each location Buys and Sells. (Working on all maps)
 
 ## 🛠️ Work in Progress 
 
 - ⬜️ Find a way to integrate the Flow Chart into the maps.
-- ⬜ Add to the Overlay the products that each location Buys and Sells. (Working on Utah)
 - ⬜️ Clean and comment the code.
 
 ## 🐞 Known Bugs 
