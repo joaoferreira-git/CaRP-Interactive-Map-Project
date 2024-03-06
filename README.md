@@ -8,7 +8,7 @@ But in early 2023 CaRP introduced a new trading system, which brang back the nee
 
 This is now archived as of 2023-01-05.
 
-This got unarchived in 2024-03-06, because I realised the readme lacked spaces making it hard to read for no reason, but that was the only change done.
+This got unarchived and archived again in 2024-03-06, because I realised the readme lacked spaces making it hard to read for no reason, but that was the only change done.
 
 ### [Toino Mapping Project](https://github.com/joaoferreira-git/CaRP-Interactive-Map-Project)
 
