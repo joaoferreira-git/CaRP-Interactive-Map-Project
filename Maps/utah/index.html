@@ -1619,6 +1619,21 @@
 					}
 				  );
 
+                  const boxoffasteners2 = new LeaderLine(
+					nutnboltco,
+					mininghq,
+					{
+					  dash: { animation: true },
+					  color: 'red',
+					  size: 8,
+					  middleLabel: LeaderLine.captionLabel('Box of Fasteners', {color: 'black', fontSize: 20, fontWeight: 'bold'}),
+					  dropShadow: true,
+					  hide: true,
+                      path: 'arc',
+					  start: startCoordinates // Add the start coordinates here
+					}
+				  );
+
                   const tools = new LeaderLine(
 					toolmanufacturer,
 					universalstore,
@@ -2169,6 +2184,14 @@
 
 				document.getElementById('nutnbolt-co').addEventListener('mouseout', function() {
                     boxoffasteners1.hide();
+				});
+
+                document.getElementById('nutnbolt-co').addEventListener('mouseover', function() {
+                    boxoffasteners2.show();
+				});
+
+				document.getElementById('nutnbolt-co').addEventListener('mouseout', function() {
+                    boxoffasteners2.hide();
 				});
 
                 document.getElementById('tool-manufacturer').addEventListener('mouseover', function() {
