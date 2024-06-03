@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>West Coast Map for CaRP Next</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">        
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="West Coast Map for CaRP Next">
+        <meta property="og:description" content="West Coast Map for CaRP Next">
+        <meta property="og:footer" content="West Coast Map for CaRP Next">
+        <meta name="theme-color" content="#0b93ec">
+        <meta property="og:image" content="https://westcoast.toino.net/embed.webp">        
+        <link type="application/json+oembed" href="embed.json">
+        
+
+    <style type="text/css" media="screen">
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+        .header {
+			font-size: 10px;
+			width: 400px; /* Set the desired width */
+			height: 500px; /* Set the desired height */
+			overflow: hidden;
+            position: absolute;
+			padding: 10px;
+            transform: scale(1, 1);
+            z-index: 300;
+            color: #ffffff;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .header:hover {
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #100e0e);
+        }
+
+        .notes {
+            position: fixed;
+            overflow: hidden;
+            padding: 0%;
+            z-index: 300;
+            left: 80%;
+            transform: scale(0.6, 0.6);
+            right: 0;
+            top: 50%;
+            color: #ffffff;
+            text-shadow: 6px 6px 20px #ffffff;
+            font-family: 'Nunito', sans-serif;
+            text-align: left;
+            opacity: 1;
+            background-color: transparent;
+            transition: transform 1s, opacity 1s, filter 1s;
+        }
+        .notes:hover {
+            opacity: 1;
+            filter: drop-shadow(0px 0px 25px #ffffff);
+        }
+
+
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            overflow: auto;
+            background: #FFFCFC;
+        }
+
+
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 150px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextnotes {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: 10%;
+            left: 80%;
+
+            opacity: 0.5;
+            transition: opacity 0.33s;
+        }
+        .tooltip .tooltiptextdealership {
+            visibility: hidden;
+            width: 120px;
+            background-color: rgba(255, 252, 252, 0.75);
+            color: #100e0e;
+            text-shadow: 6px 6px 16px #100e0e;
+            font-family: 'Nunito', sans-serif;
+            text-align: center;
+            padding: 5px 0;
+            border-radius: 6px;
+ 
+            position: absolute;
+            z-index: 1;
+            top: -15%;
+            left: 95%;
+
+            opacity: 0;
+            transition: opacity 0.33s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextnotes {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip:hover .tooltiptextdealership {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+
+        .poi {
+            position: absolute;
+        }
+
+
+        .poi .produceranimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .produceranimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px rgba(0, 255, 30, 0));
+        }
+
+
+        .poi .refineranimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .refineranimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #ffc40000);
+        }
+
+
+        .poi .demanderanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px rgba(255, 68, 0, 0));
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .demanderanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 50px rgba(255, 68, 0, 0));
+        }
+
+
+        .poi .gasstationanimation {
+            transform: scale(0.2, 0.2);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .gasstationanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #e092ff00);
+        }
+
+
+        .poi .garageanimation {
+            transform: scale(0.3, 0.3);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .garageanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #00ff5500);
+        }
+
+
+        .poi .dealershipanimation {
+            transform: scale(0.25, 0.25);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+            transition: transform 1s, filter 1s;
+        }
+        .poi:hover .dealershipanimation {
+            transform: scale(0.5, 0.5);
+            filter: drop-shadow(0px 0px 40px #ff00fb00);
+        }
+
+        #openseadragon1 {
+            width: 100%;
+            height: 100%
+        }
+        </style>
+    </head>
+
+    <body style="overflow: hidden">
+
+
+        
+        <div id="header" class="header">
+
+            <h1>
+                    <p>Credits:<br>
+                        <p>Desoroxxx for sharing the Italy project she made.</p>
+                        </a>
+                        UkDrifter  for making the Utah Map used in the old version.<br>
+                        <br>
+                        Stinger  for making the East Coast and West Coast map.<br>
+                        <br>
+                        DAF Pvnk for choosing the icons and editing them.<br>
+                        <br>
+                        Thanks to iangilman for helping me on how to implement the arrow overlays in Utah and any thing OpenSeadragon related.<br>
+                    </p>
+                </div>
+            </h1>
+        </div>
+    
+        <div class="notes">
+            <h1>
+                <a href="https://discord.gg/AQPyyGddfX">
+                    <div id="discord">
+                    <img src="CaRPLogo.webp" alt="CaRP Logo" width="300">
+                    
+                </div>
+                <a href="https://desoroxxx.github.io/Portfolio/">
+                    <div id="Desoroxxx">
+                        <p>Desoroxxx Portfolio</p>
+                </div>
+                <a href="https://imgur.com/a/84awQlf">
+                    <div id="Stinger">
+                        <p>Link to Maps made by Stinger</p>
+                </div>
+                <a href="https://iangilman.com/">
+                    <div id="missiongivertooltip">
+                        <p>Ian Gilman Website</p>
+                </div>
+                <a href="https://openseadragon.github.io">
+                    <div id="openseadragon">
+                    <p>Powered by: </p>
+                    <img src="https://blogs.library.duke.edu/bitstreams/files/2015/11/openseadragon-logo.png" alt="OpenSeadragon" width="350">
+                </div>
+            </h1>
+        </div>
+
+
+    <div id="openseadragon1" class="fullscreen"></div>
+
+    <div id="tuneshop-1" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 1</span>
+    </div>
+    <div id="tuneshop-2" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 2</span>
+    </div>
+    <div id="tuneshop-3" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 3</span>
+    </div>
+    <div id="tuneshop-4" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 4</span>
+    </div>
+    <div id="tuneshop-5" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 5</span>
+    </div>
+    <div id="tuneshop-6" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 6</span>
+    </div>
+    <div id="tuneshop-7" class="poi">
+        <div id="garageanimation" class="tooltip">
+        <img src="Garagerepair.webp" class="garageanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tune Shop 7</span>
+    </div>
+    <div id="fuelstation-1" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Trilobite in the City
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>	
+        </span>
+    </div>
+    <div id="fuelstation-2" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Apex in the City
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>	
+        </span>
+    </div>
+    <div id="fuelstation-3" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Trilobite Near Race Track
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>	
+        </span>
+    </div>
+    <div id="fuelstation-4" class="poi">
+        <div id="gasstationanimation" class="tooltip">
+        <img src="fuelstation.webp" class="gasstationanimation" alt="Mission Giver">
+        <span class="tooltiptext">Tyrranos in Spearleaf
+            <ul>
+                <p>Buys</p>
+                    <li>Fuel</li>
+                    </ul>	
+        </span>
+    </div>
+    <div id="dealership-1" class="poi">
+        <div id="dealershipanimation" class="tooltip">
+        <img src="Dealership.webp" class="dealershipanimation" alt="dealership">
+        <span class="tooltiptext">Dealership 1</span>
+    </div>
+    <div id="fuel-depot" class="poi">
+        <div id="produceranimation" class="tooltip">
+        <img src="fueldepot.webp" class="produceranimation" alt="Mission Giver">
+        <span class="tooltiptext">Fuel Depot
+            <ul>
+                <p>Sells</p>
+                    <li>Fuel</li>
+                    </ul>	
+        </span>
+    </div>
+
+
+    <script src="openseadragon/openseadragon.min.js"></script>
+    <script type="text/javascript">
+
+    var poland = {
+            tileSource: {
+            //required	
+            type:       "zoomifytileservice",
+            width:      8208,
+            height:     8214,
+            tilesUrl:   "poland/",
+            //optional
+            tileSize: 256,
+            fileFormat: 'jpg',
+            },
+            x: 0,
+            y: 0,
+            width: 8208
+        };
+    
+
+    var viewer = window.OpenSeadragon({
+        id: "openseadragon1",
+        prefixUrl: "openseadragon/images/",
+        blendTime: 1,
+        overlap: 2,
+        maxZoomLevel: 30,
+        showFullPageControl: true,
+        minZoomLevel: 0,
+        sequenceMode: false,
+        tileSources: [
+            poland
+        ],
+
+
+      overlays: [{
+        id: 'header',
+        x: 8208,
+        y: 2000,
+        placement: 'LEFT',
+        checkResize: false,
+    },
+    {
+        id: 'fuel-depot',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'dealership-1',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-1',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-2',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-3',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-4',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-5',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-6',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'tuneshop-7',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-1',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-2',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-3',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    {
+        id: 'fuelstation-4',
+        x: 0,
+        y: 0,
+        placement: 'CENTER',
+        checkResize: false,
+    },
+    ]});
+
+    
+    </script>
+    </body>
+</html>
