@@ -36,4 +36,4 @@
 - ![](https://geps.dev/progress/100) **Jonhson Valley**
 - ![](https://geps.dev/progress/100) **Italy**
 
-## CaRP Discord(https://discord.gg/AQPyyGddfX)
+## CaRP Discord(https://discord.gg/carp)
